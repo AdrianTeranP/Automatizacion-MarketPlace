@@ -4,7 +4,8 @@ import org.openqa.selenium.WebDriver;
 
 import Constant.Navegador;
 
-public class DriverContext {
+public class
+DriverContext {
     private static final DriverManager driverManager = new DriverManager();
 
     public static void setUp(Navegador nav, String url){

@@ -1,6 +1,5 @@
+//El rubner inicia
 package Runner;
-
-
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -9,9 +8,12 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"StepDefinition"},
-        plugin = {"pretty", "html:target/cucumber-report.html"},
+        plugin = {
+                "pretty",
+                "html:target/cucumber-report.html"
+        },
         monochrome = true,
-        tags = "@search_by_leave_status"
+        tags = "@Marketplace"
 )
 
 public class Runner {

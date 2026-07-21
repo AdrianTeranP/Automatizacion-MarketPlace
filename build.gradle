@@ -1,39 +1,43 @@
 plugins {
     id 'java'
 }
-
 group = 'org.example'
 version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
-java{
+
+java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
+// --- NUEVO: fuerza que javac compile todo en UTF-8 ---
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+// Selenium
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.30.0'
 
-    // Selenium
-    implementation 'org.seleniumhq.selenium:selenium-java:4.30.0'
-    //implementation 'io.github.bonigarcia:webdrivermanager:5.8.1'
-    // Cucumber
-    implementation 'io.cucumber:cucumber-java:7.14.0'
-    implementation 'io.cucumber:cucumber-junit:7.14.0'
+// Cucumber con JUnit 4
+    testImplementation 'io.cucumber:cucumber-java:7.14.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.14.0'
 
-    // JUnit
+// JUnit 4
     testImplementation 'junit:junit:4.13.2'
 
-    //IA
+// IA y servicios auxiliares
     implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.1'
 }
 
 test {
     useJUnit()
+    // --- NUEVO: fuerza que la JVM de test use UTF-8 al leer el .feature y ejecutar ---
+    systemProperty 'file.encoding', 'UTF-8'
 }
