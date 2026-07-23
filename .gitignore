@@ -46,3 +46,5 @@ bin/
 *.properties
 .env
 config/secrets.*
+
+config.properties
