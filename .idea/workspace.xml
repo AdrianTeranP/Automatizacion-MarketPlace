@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="683be9a8-5cc0-450e-8b36-b8b8ce29f0da" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/features/Marketplace.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/Marketplace.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ObjectPage/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ObjectPage/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ObjectPage/MarketplacePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ObjectPage/MarketplacePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,12 +28,83 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0" />
+      <entry key="M5" value="1.0000000000544207" />
+      <entry key="M10" value="1.0000367263922578" />
+      <entry key="M15" value="1.0039481728216249" />
+      <entry key="M30" value="1.6560943192970394" />
+      <entry key="H1" value="11.84546632078444" />
+      <entry key="H2" value="49.00043335227458" />
+      <entry key="H4" value="105.66010774978061" />
+      <entry key="D1" value="207.1433110049973" />
+      <entry key="W1" value="233.3032616728787" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="1.6038399339611669E-114" />
+      <entry key="S60" value="1.7898054607890086E-57" />
+      <entry key="M2" value="7.922134270507932E-29" />
+      <entry key="M5" value="1.7705479265076067E-11" />
+      <entry key="M10" value="1.2818759667356313E-5" />
+      <entry key="M15" value="0.0013094497153619464" />
+      <entry key="M30" value="0.17575659500519336" />
+      <entry key="H1" value="2.452045174658922" />
+      <entry key="H2" value="9.70664498735744" />
+      <entry key="H4" value="19.605669328474658" />
+      <entry key="D1" value="35.49315781225037" />
+      <entry key="W1" value="39.322047770643614" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="2.237005136932142E-6" />
+      <entry key="MS500" value="0.07411965621318424" />
+      <entry key="S2" value="0.5217750989018416" />
+      <entry key="S5" value="0.770891646522533" />
+      <entry key="S10" value="0.8780043545008948" />
+      <entry key="S30" value="0.957559031053358" />
+      <entry key="S60" value="0.9785494525333699" />
+      <entry key="M2" value="0.989216585249848" />
+      <entry key="M5" value="0.9956725995097434" />
+      <entry key="M10" value="0.997883295872661" />
+      <entry key="M15" value="1.0038005015153306" />
+      <entry key="M30" value="1.8303746360845459" />
+      <entry key="H1" value="14.29201875722633" />
+      <entry key="H2" value="58.69664172533124" />
+      <entry key="H4" value="125.25520089798533" />
+      <entry key="D1" value="242.633243223382" />
+      <entry key="W1" value="272.6247976671729" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7,
   &quot;fromUser&quot;: false
 }</component>
   <component name="ProjectId" id="3GsbTVMiuKSRbI88TlXcFD0Lap6" />
   <component name="ProjectSessionTemplates">
+    <option name="inlineTemplate">
+      <template>
+        <option name="modeId" value="InlineAgent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="LOCAL" />
+      </template>
+    </option>
     <option name="panelTemplate">
       <template>
         <option name="modeId" value="Agent" />

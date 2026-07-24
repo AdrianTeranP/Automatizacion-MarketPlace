@@ -1,24 +1,31 @@
-//Esta clase representa la pagina que se utilizara
 package ObjectPage;
 
-import org.openqa.selenium.WebDriver; // importa la interfaz webDriver de Selenium y representa el navegador controlado por la automatizacion
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class MarketplacePage {  // Declarar de una clase
+import java.time.Duration;
 
-    private WebDriver driver;//Atributos
+public class MarketplacePage {
 
-    public MarketplacePage(WebDriver driver) { //Crear un contructor donde se recibe el navegador
-        this.driver = driver; }// Asignar parametros al atributo
+    private WebDriver driver;
+    private WebDriverWait wait;
+
+    public MarketplacePage(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+    }
 
     public void abrirPagina(String url) {
-            driver.get(url);
+        driver.get(url);
+    }
 
-        }
-        public boolean validarPaginaPrincipal(){//Metodo que devuelve un boolean true pertenece a MarketPalce, false no corresponde
-
-            String urlActual = driver.getCurrentUrl();// aca se indica que la variable  guarda el texto
-
-            return urlActual.contains("https://www.facebook.com/marketplace/");// aca valida el contenido de la url
-
+    public boolean validarPaginaPrincipal() {
+        try {
+            wait.until(ExpectedConditions.urlContains("facebook.com/marketplace"));
+            return true;
+        } catch (org.openqa.selenium.TimeoutException e) {
+            return false;
         }
     }
+}
