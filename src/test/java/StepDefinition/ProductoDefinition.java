@@ -15,12 +15,13 @@ public class ProductoDefinition {
    private MarketplacePage marketplacePage;
    private ResultadosBusquedaPage resultadosBusquedaPage;
 
+// @TC-3
     @Given("que el usuario abre el Marketplace sin iniciar sesión")
     public void usuarioabreMarketPlaceSinLogin(){  // aca se rercupera el navegadorf quew se creo en el hooks
 
         DriverContext.setUp(
                 Navegador.Chrome,
-                "https://www.facebook.com/marketplace/"
+                "https://www.facebook.com/marketplace/santiagocl/?locale=es_LA"
          );
         driver = DriverContext.getDriver();      // 2° recién ahora lo recuperamos
         marketplacePage = new MarketplacePage(driver);
@@ -33,10 +34,24 @@ public class ProductoDefinition {
     }
     @Then("debería mostrar los resultados de la búsqueda")
     public void validarResultadosBusqueda(){
+        resultadosBusquedaPage.cerrarModalSiAparece();
         boolean hayResultados = resultadosBusquedaPage.validarUrlDeBusqueda();
         if (!hayResultados){
             throw new AssertionError("No se mostraron resultados de la busqueda");
 
+        }
+
+    }
+    // @TC-04
+    @When("selecciona un producto de los resultados")
+    public void seleccionarProducto() {
+        resultadosBusquedaPage.seleccionarProducto();
+    }
+    @Then("debería ver el detalle del producto")
+    public void validarDetalleProducto(){
+        boolean detalleVisible = resultadosBusquedaPage.validarDetalleProducto();
+        if (!detalleVisible){
+            throw new AssertionError("No se mostro el detalle del producto");
         }
     }
 }

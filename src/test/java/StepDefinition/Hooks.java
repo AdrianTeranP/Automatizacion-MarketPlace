@@ -12,6 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 public class Hooks {
     private Scenario scenario;
     private static final String tomarCapturaPantalla;
+    private static final long PASUA_ANTES_DE_CAPTURAR_MS = 2000;
 
     static{
         tomarCapturaPantalla = System.getProperty("evidence","fullEvidence");
@@ -28,6 +29,13 @@ public class Hooks {
     public void tearDown(){
         DriverContext.quitDriver();
     }
+    public void pausaParaEstabilizarVisual(){
+        try{
+            Thread.sleep(PASUA_ANTES_DE_CAPTURAR_MS);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
     public void generarEvidencia(String imageRefName){
 
@@ -39,6 +47,7 @@ public class Hooks {
 
             return;
         }
+        pausaParaEstabilizarVisual();
 
         byte[] screenShot =
                 ((TakesScreenshot)

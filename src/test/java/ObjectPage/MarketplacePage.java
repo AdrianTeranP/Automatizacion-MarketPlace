@@ -9,14 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MarketplacePage {
+public class MarketplacePage extends BasePage {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final By campoBusqueda =
+            By.cssSelector("input[aria-label='Buscar en Marketplace']");
 
     public MarketplacePage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        super(driver);
     }
 
     public void abrirPagina(String url) {
@@ -24,14 +23,9 @@ public class MarketplacePage {
     }
 
     public boolean validarPaginaPrincipal() {
-        try {
-            wait.until(ExpectedConditions.urlContains("facebook.com/marketplace"));
-            return true;
-        } catch (org.openqa.selenium.TimeoutException e) {
-            return false;
-        }
+        return urlContiene("facebook.com/marketplace");
     }
-    private final By campoBusqueda = By.cssSelector("input[aria-label='Buscar en Marketplace']");;//Esto es un locator — le dice a Selenium dónde está el campo. Usamos aria-label porque el input no tiene id ni name, y aria-label es el atributo más estable que encontramos al inspeccionar.
+
     public void buscarProducto(String producto){
         WebElement campo = wait.until(ExpectedConditions.visibilityOfElementLocated(campoBusqueda));//Esta línea espera (hasta 15 segundos) a que el campo de búsqueda sea visible, y una vez que lo es, lo guarda en la variable campo — mismo patrón de espera explícita que usamos en todo LoginPage.
         campo.clear();//Limpia el campo (por si tenía texto previo)

@@ -41,3 +41,9 @@ test {
     // --- NUEVO: fuerza que la JVM de test use UTF-8 al leer el .feature y ejecutar ---
     systemProperty 'file.encoding', 'UTF-8'
 }
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
