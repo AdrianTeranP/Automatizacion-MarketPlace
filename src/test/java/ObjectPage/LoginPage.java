@@ -1,15 +1,13 @@
 package ObjectPage;
 
-import java.time.Duration;
-
+import java.time.Duration;                                    // Importado pero ya no se usa
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.WebDriverWait;           // Importado pero ya no se usa
 
 public class LoginPage extends BasePage {
-
 
     // Localizadores
     private final By campoUsuario = By.xpath(
@@ -19,66 +17,44 @@ public class LoginPage extends BasePage {
     private final By campoPassword = By.xpath(
             "(//input[@name='pass'" + " and not(ancestor::*[@role='dialog'])])[1]"
     );
+
     private final By botonIniciarSesion = By.xpath(
             "//input[@name='pass' and not(ancestor::*[@role='dialog'])]" +
                     "/ancestor::form//*[@aria-label='Iniciar sesión' and @role='button']"
     );
 
-    //Constructor
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-
-
-    // Escribir el usuario
     public void ingresarUsuario(String usuario) {
-
         WebElement campo = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        campoUsuario
-                )
+                ExpectedConditions.visibilityOfElementLocated(campoUsuario)
         );
-
         campo.clear();
         campo.sendKeys(usuario);
-
     }
 
-    // Escribir la contraseña
     public void ingresarPassword(String password) {
-
         WebElement campoPass = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        campoPassword
-                )
+                ExpectedConditions.visibilityOfElementLocated(campoPassword)
         );
-
         campoPass.clear();
         campoPass.sendKeys(password);
-
     }
 
-    //Precionar el boton real del formulario superior
     public void clicIniciarSesion() {
         WebElement boton = wait.until(
-                ExpectedConditions.elementToBeClickable(
-                        botonIniciarSesion
-                )
+                ExpectedConditions.elementToBeClickable(botonIniciarSesion)
         );
         boton.click();
-
     }
 
-    //Metodo orquestador
-    public void iniciarSesion(
-            String usuario,
-            String password
-    ) {
-        cerrarModalSiAparece();
+    // Método orquestador: encadena los 4 pasos del login en el orden correcto
+    public void iniciarSesion(String usuario, String password) {
+        cerrarModalSiAparece();   // Heredado de BasePage
         ingresarUsuario(usuario);
         ingresarPassword(password);
         clicIniciarSesion();
     }
-
 }

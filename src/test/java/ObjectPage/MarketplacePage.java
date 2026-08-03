@@ -1,13 +1,10 @@
 package ObjectPage;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.Keys;                              // Constantes de teclas especiales (Enter, Tab, etc.)
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class MarketplacePage extends BasePage {
 
@@ -15,21 +12,21 @@ public class MarketplacePage extends BasePage {
             By.cssSelector("input[aria-label='Buscar en Marketplace']");
 
     public MarketplacePage(WebDriver driver) {
-        super(driver);
+        super(driver);   // Inicializa driver/wait heredados de BasePage
     }
 
     public void abrirPagina(String url) {
-        driver.get(url);
+        driver.get(url);   // driver.get(...) navega el navegador a esa URL directamente
     }
 
     public boolean validarPaginaPrincipal() {
-        return urlContiene("facebook.com/marketplace");
+        return urlContiene("facebook.com/marketplace");   // Heredado de BasePage
     }
 
     public void buscarProducto(String producto){
-        WebElement campo = wait.until(ExpectedConditions.visibilityOfElementLocated(campoBusqueda));//Esta línea espera (hasta 15 segundos) a que el campo de búsqueda sea visible, y una vez que lo es, lo guarda en la variable campo — mismo patrón de espera explícita que usamos en todo LoginPage.
-        campo.clear();//Limpia el campo (por si tenía texto previo)
-        campo.sendKeys(producto); //escribe el término de búsqueda recibido como parámetro — igual que ingresarUsuario/ingresarPassword en el login.
-        campo.sendKeys(Keys.ENTER);//Esta es la parte nueva: Keys.ENTER no es texto, es una tecla especial. Keys es una clase de Selenium con constantes para teclas que no puedes "escribir" como caracteres normales (Enter, Tab, flechas, Escape, etc.). Al enviarla con sendKeys, Selenium simula que el usuario presionó físicamente esa tecla — y como confirmaste que Enter dispara la búsqueda en Facebook, esto reemplaza la necesidad de hacer clic en algún botón de lupa.
+        WebElement campo = wait.until(ExpectedConditions.visibilityOfElementLocated(campoBusqueda));
+        campo.clear();
+        campo.sendKeys(producto);
+        campo.sendKeys(Keys.ENTER);   // Simula presionar la tecla Enter físicamente
     }
 }
