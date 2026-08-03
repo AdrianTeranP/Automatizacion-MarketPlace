@@ -54,4 +54,23 @@ public class ProductoDefinition {
             throw new AssertionError("No se mostro el detalle del producto");
         }
     }
+    @When("ordena los resultados por {string}")
+    public void ordenarResultadosPor(String opcionDeOrden) {
+        resultadosBusquedaPage.seleccionarOrden(opcionDeOrden);
+        System.out.println("URL después de ordenar: " + DriverContext.getDriver().getCurrentUrl());
+    }
+
+    @Then("los productos deberían mostrarse en orden ascendente de precio")
+    public void validarOrdenAscendente(){
+        if (!resultadosBusquedaPage.validarOrdenPorPrecio(true)){
+            throw new AssertionError("Los productos no están ordenados de menor a mayor precio");
+        }
+    }
+
+    @Then("los productos deberían mostrarse en orden descendente de precio")
+    public void validarOrdenDescendente(){
+        if (!resultadosBusquedaPage.validarOrdenPorPrecio(false)){
+            throw new AssertionError("Los productos no están ordenados de mayor a menor precio");
+        }
+    }
 }
