@@ -48,3 +48,6 @@ bin/
 config/secrets.*
 
 config.properties
+.idea/workspace.xml
+
+target/
