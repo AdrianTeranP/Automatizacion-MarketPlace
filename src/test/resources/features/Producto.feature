@@ -41,3 +41,9 @@ Feature: Búsqueda de productos en MarketPlace
       | filtro                               |
       | Distancia: más cerca                 |
       | Fecha de publicación: más recientes  |
+
+  @TC-8
+  Scenario: Aplicar el orden por defecto (Sugerencias)
+    When ingresa el nombre de un producto "laptop" en la barra de busqueda
+    And ordena los resultados por "Sugerencias"
+    Then debería mostrar los resultados de la búsqueda

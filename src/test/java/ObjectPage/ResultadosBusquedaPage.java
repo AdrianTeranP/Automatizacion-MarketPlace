@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.regex.Matcher;   // Representa UNA búsqueda de un patrón sobre un texto específico
 import java.util.regex.Pattern;   // Representa el patrón (la "receta") de la expresión regular en sí
+import java.util.Map;
 
 // extends BasePage: hereda driver, wait, cerrarModalSiAparece(),
 // urlContiene(), clicSeguro() y scrollVertical() — nada de eso se
@@ -92,8 +93,18 @@ public class ResultadosBusquedaPage extends BasePage {
 
     // ===================== TC-5/6/7: ordenar resultados =====================
 
+    //Este único método ahora sirve para las 5 opciones, con una sola forma de esperar
+
     private final By botonOrdenarPor = By.xpath
             ("//div[@role='button' and .//span[text()='Ordenar por']]");
+
+    private static final Map<String, String> SORT_BY_ESPERADO = Map.of(
+            "Sugerencias", "sortBy=best_match",
+            "Precio: más bajo", "sortBy=price_ascend",
+            "Precio: más alto", "sortBy=price_descend",
+            "Distancia: más cerca", "sortBy=distance_ascend",
+            "Fecha de publicación: más recientes", "sortBy=creation_time_descend"
+    );
 
     public void seleccionarOrden(String textoOpcion){
 
@@ -107,7 +118,11 @@ public class ResultadosBusquedaPage extends BasePage {
         WebElement elementoOpcion = wait.until(ExpectedConditions.elementToBeClickable(opcion));
         clicSeguro(elementoOpcion);
 
-        wait.until(ExpectedConditions.textToBePresentInElement(boton, textoOpcion));
+        String fragmentoEsperado = SORT_BY_ESPERADO.get(textoOpcion);
+        if (fragmentoEsperado == null){
+            throw new IllegalArgumentException("No se conoce el sortBy esperado para: " + textoOpcion);
+        }
+        wait.until(ExpectedConditions.urlContains(fragmentoEsperado));
     }
 
     // ===================== TC-5/6: validar el orden =====================
